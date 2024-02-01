@@ -17,7 +17,7 @@ users should adjust the bash commands accordingly.
 2. Activate python virtual environment
 3. Install [dbt-fabric](https://github.com/microsoft/dbt-fabric): `pip install dbt-fabric`
 4. Go to your `~/.dbt` folder (created when installing dbt) and create profiles.yml:
-5. Populate `~/.dbt/profiles.yml` with your Databricks host, API token, cluster ID, and schema name, please use environment variable according to https://docs.getdbt.com/reference/dbt-jinja-functions/env_var
+5. Populate `~/.dbt/profiles.yml` with your MSFabric information (https://docs.getdbt.com/docs/core/connect-data-platform/fabric-setup), please use environment variable according to https://docs.getdbt.com/reference/dbt-jinja-functions/env_var
 ```bash
 open ~/.dbt
 ```

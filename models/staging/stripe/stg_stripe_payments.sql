@@ -1,13 +1,10 @@
 {{ config(
-    incremental_strategy='insert_overwrite',
-    materialized='table',
-    file_format='delta',
-    location_root='/dbfs/delta/'
+    materialized='view',
 ) }}
 
 with source_payments as (
 
-    select * from {{ source('default', 'payments') }}
+    select * from {{ source('ecom', 'payments') }}
 
 ),
 

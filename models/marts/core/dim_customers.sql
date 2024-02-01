@@ -1,8 +1,5 @@
 {{ config(
-    incremental_strategy='append',
-    materialized='table',
-    file_format='delta',
-    location_root='/dbfs/delta/'
+    materialized='view',
 ) }}
 
 with customers as (
@@ -28,7 +25,7 @@ customer_orders as (
 
     from orders
 
-    group by 1
+    group by customer_id
 
 ),
 
@@ -45,7 +42,9 @@ final as (
 
     from customers
 
-    left join customer_orders using (customer_id)
+    left join customer_orders 
+
+    ON customers.customer_id = customer_orders.customer_id
 
 )
 

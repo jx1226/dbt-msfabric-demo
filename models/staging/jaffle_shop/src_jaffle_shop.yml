@@ -1,9 +1,9 @@
 version: 2
 
 sources:
-  - name: default
-    description: A replica of the postgres database
-
+  - name: ecom
+    description: E-commerce data
+    schema: dbo
     tables:
       - name: customers
         columns:
@@ -37,5 +37,5 @@ sources:
             tests:
               - not_null
               - relationships:
-                  to: source('default', 'customers')
+                  to: source('ecom', 'customers')
                   field: id

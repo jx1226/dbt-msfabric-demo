@@ -1,13 +1,10 @@
 {{ config(
-    incremental_strategy='insert_overwrite',
-    materialized='table',
-    file_format='delta',
-    location_root='/dbfs/delta/'
+    materialized='view',
 ) }}
 
 with source_customers as (
 
-    select * from {{ source('default', 'customers') }}
+    select * from {{ source('ecom', 'customers') }}
 
 ),
 

@@ -1,8 +1,5 @@
 {{ config(
-    incremental_strategy='append',
-    materialized='table',
-    file_format='delta',
-    location_root='/dbfs/delta/'
+    materialized='view',
 ) }}
 
 with orders as  (
@@ -25,7 +22,7 @@ order_payments as (
 
     from payments
 
-    group by 1
+    group by order_id
 
 ),
 
@@ -40,7 +37,9 @@ final as (
 
     from orders
 
-    left join order_payments using (order_id)
+    left join order_payments
+    
+    ON orders.order_id = order_payments.order_id
 
 )
 
